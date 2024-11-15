@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <template id="report_simple_labelmartos">
+            <t t-set="barcode_size" t-value="'width:33mm;height:14mm'"/>
+            <t t-set="table_style" t-value="'width:97mm;height:37.1mm;' + table_style"/>
+            <td t-att-style="make_invisible and 'visibility:hidden;'">
+                <div class="o_label_full" t-att-style="table_style">
+                    <div class="o_label_name text-left" style="font-size:10pt;">
+                        <strong t-field="product.display_name"/>
+                    </div>
+
+                    <div class="o_label_reference text-right" style="font-size:8pt;">
+                        <span t-field="product.default_code"/>
+                    </div>
+
+                    <div class="o_label_price text-center" style="font-size:18pt; font-weight:bold; margin-top:5px;">
+                        <strong
+                            t-out="pricelist._get_product_price(product, 1, pricelist.currency_id or product.currency_id)"
+                            t-options="{'widget': 'monetary', 'display_currency': pricelist.currency_id or product.currency_id}"/>
+                    </div>
+                    <!--            <div class="o_label_points text-center" style="font-size:8pt; color:red; margin-top:2px;">-->
+                    <!--                PTS:-->
+                    <!--                <span t-out="product.points_value"/>-->
+                    <!--            </div>-->
+                </div>
+            </td>
+        </template>
+    </data>
+</odoo>
