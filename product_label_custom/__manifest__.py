@@ -10,6 +10,8 @@
     'depends': ['base', 'product', 'stock'],
     'data': [
         "report/product_product_templates.xml",
+        "report/product_reports.xml",
+        "report/product_template_templates.xml",
     ],
     'installable': True,
     'application': False,

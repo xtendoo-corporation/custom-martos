@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_producttemplatelabel38x21">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <t t-call="product_label_custom.report_simple_product_label_38x21"/>
+            </div>
+        </t>
+    </template>
+</odoo>

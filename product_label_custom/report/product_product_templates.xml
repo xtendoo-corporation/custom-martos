@@ -1,29 +1,33 @@
 <odoo>
     <data>
-        <template id="report_simple_labelmartos">
+        <template id="report_simple_product_label_38x21">
+            <t t-call="web.html_container">
             <t t-set="barcode_size" t-value="'width:33mm;height:14mm'"/>
-            <t t-set="table_style" t-value="'width:97mm;height:37.1mm;' + table_style"/>
-            <td t-att-style="make_invisible and 'visibility:hidden;'">
-                <div class="o_label_full" t-att-style="table_style">
-                    <div class="o_label_name text-left" style="font-size:10pt;">
-                        <strong t-field="product.display_name"/>
-                    </div>
+            <t t-set="table_style" t-value="'width:97mm;height:37.1mm;border:1px solid black;margin-top:10px;page-break-inside:avoid;'"/>
+            <t t-foreach="quantity.items()" t-as="barcode_and_qty_by_product">
+                <t t-set="product" t-value="barcode_and_qty_by_product[0]"/>
+                <t t-foreach="barcode_and_qty_by_product[1]" t-as="barcode_and_qty">
+                    <t t-set="barcode" t-value="barcode_and_qty[0]"/>
+                    <t t-foreach="range(barcode_and_qty[1])" t-as="qty">
+                        <div class="o_label_full" t-att-style="table_style">
+                            <div class="o_label_reference"
+                                 style="font-size:20pt; text-align: right; margin-top:10px; margin-right:15px;">
+                                <span t-field="product.default_code"/>
+                            </div>
 
-                    <div class="o_label_reference text-right" style="font-size:8pt;">
-                        <span t-field="product.default_code"/>
-                    </div>
-
-                    <div class="o_label_price text-center" style="font-size:18pt; font-weight:bold; margin-top:5px;">
-                        <strong
-                            t-out="pricelist._get_product_price(product, 1, pricelist.currency_id or product.currency_id)"
-                            t-options="{'widget': 'monetary', 'display_currency': pricelist.currency_id or product.currency_id}"/>
-                    </div>
-                    <!--            <div class="o_label_points text-center" style="font-size:8pt; color:red; margin-top:2px;">-->
-                    <!--                PTS:-->
-                    <!--                <span t-out="product.points_value"/>-->
-                    <!--            </div>-->
-                </div>
-            </td>
+                            <span style="font-size:16pt; text-align: left; margin-left:15px;">
+                                <strong>P.V.P.</strong>
+                            </span>
+                            <div class="o_label_price"
+                                 style="font-size:22pt; font-weight:bold; margin-top:5px; text-align: right; margin-right:15px;">
+                                <span t-field="product.list_price"/>
+                                <span> €</span>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+                </t>
+            </t>
         </template>
     </data>
 </odoo>

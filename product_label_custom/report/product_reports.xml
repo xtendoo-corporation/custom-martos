@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="report_product_label_38x21" model="ir.actions.report">
+            <field name="name">Product Label 38x21 (PDF)</field>
+            <field name="model">product.template</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_label_custom.report_producttemplatelabel38x21</field>
+            <field name="report_file">product_label_custom.report_producttemplatelabel38x21</field>
+            <field name="paperformat_id" ref="product.paperformat_label_sheet"/>
+            <field name="print_report_name">'Products Labels - %s' % (object.name)</field>
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>
