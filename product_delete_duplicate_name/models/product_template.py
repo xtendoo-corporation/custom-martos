@@ -8,6 +8,7 @@ class ProductTemplate(models.Model):
         products = self.search([])
         product_names = {}
         for product in products:
+            print("Product name: ", product.name)
             if product.name in product_names:
                 product.active = False
             else:
