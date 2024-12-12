@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <!-- Acción de servidor para ejecutar la función -->
+        <record id="action_remove_duplicate_products" model="ir.actions.server">
+            <field name="name">Remove Duplicate Products</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">model.remove_duplicate_products()</field>
+        </record>
+
+        <!-- Entrada de menú para ejecutar la acción -->
+        <menuitem id="menu_remove_duplicate_products"
+                  name="Remove Duplicate Products"
+                  parent="sale.product_menu_catalog"
+                  action="action_remove_duplicate_products"/>
+    </data>
+</odoo>
