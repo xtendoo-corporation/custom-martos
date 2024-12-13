@@ -6,7 +6,7 @@ class ProductTemplate(models.Model):
 
     @api.model
     def remove_duplicate_products(self):
-        product_category_obj = self.env['product.category']
+        pos_category_obj = self.env['pos.category']
         products = self.search([])
         for product in products.filtered(lambda p: p.categ_id):
             product_categ_name = product.categ_id.name
@@ -15,10 +15,10 @@ class ProductTemplate(models.Model):
 
             print("Product category: ", product_categ_name)
 
-            product_category = product_category_obj.search([('name', '=', product_categ_name)], limit=1)
-            if product_category:
-                product.categ_id = product_category.id
-                print("Product category updated: ", product.name, product_category.name)
+            pos_category = pos_category_obj.search([('name', '=', product_categ_name)], limit=1)
+            if pos_category:
+                product.pos_categ_ids = [(6, 0, [pos_category.id])]
+                print("Product category updated: ", product.name, pos_category.name)
             else:
                 print("Product category not found: ", product.name, product_categ_name)
 
