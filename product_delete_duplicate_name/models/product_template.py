@@ -7,8 +7,8 @@ class ProductTemplate(models.Model):
     @api.model
     def remove_duplicate_products(self):
         product_category_obj = self.env['product.category']
-        products = self.search(["categ_id", "!=", 0])
-        for product in products:
+        products = self.search([])
+        for product in products.filtered(lambda p: p.categ_id):
             product_categ_name = product.categ_id.name
             if product_categ_name.startswith("Todo / "):
                 product_categ_name = product_categ_name.replace("Todo / ", "")
