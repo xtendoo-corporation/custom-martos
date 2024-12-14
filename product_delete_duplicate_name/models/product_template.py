@@ -6,19 +6,13 @@ class ProductTemplate(models.Model):
 
     @api.model
     def remove_duplicate_products(self):
-        pos_category_obj = self.env['pos.category']
+        pos_category = self.env['pos.category'].search([('name', '=', 'Todo')], limit=1)
+        if not pos_category:
+            print("POS category not found: Todo")
+            return
+
         products = self.search([])
-        for product in products.filtered(lambda p: p.categ_id):
-            product_categ_name = product.categ_id.name
-            if product_categ_name.startswith("Todo / "):
-                product_categ_name = product_categ_name.replace("Todo / ", "")
-
-            print("Product category: ", product_categ_name)
-
-            pos_category = pos_category_obj.search([('name', '=', product_categ_name)], limit=1)
-            if pos_category:
-                product.pos_categ_ids = [(6, 0, [pos_category.id])]
-                print("Product category updated: ", product.name, pos_category.name)
-            else:
-                print("Product category not found: ", product.name, product_categ_name)
+        for product in products:
+            product.pos_categ_ids = [(6, 0, [pos_category.id])]
+            print("Product category updated: ", product.name, pos_category.name)
 
