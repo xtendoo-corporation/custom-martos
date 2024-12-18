@@ -7,8 +7,8 @@
         <field name="arch" type="xml">
             <xpath expr="//group[@name='pos_session_group']" position="after">
                 <div>
-                    <field name="add_report_cost"/>
-                    <label for="add_report_cost"/>
+<!--                    <field name="add_report_cost"/>-->
+<!--                    <label for="add_report_cost"/>-->
                 </div>
             </xpath>
         </field>

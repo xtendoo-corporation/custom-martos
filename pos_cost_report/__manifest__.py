@@ -10,6 +10,7 @@
     ],
     'data': [
         'wizard/pos_daily_sales_reports.xml',
+        'views/pos_session_sales_details.xml',
     ],
     'installable': True,
     'auto_install': True,
