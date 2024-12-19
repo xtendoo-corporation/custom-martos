@@ -1,23 +1,6 @@
 <odoo>
     <data>
         <template id="pos_session_sales_details" inherit_id="point_of_sale.pos_session_sales_details">
-<!--            <xpath expr="//tr[@t-foreach=&quot;category['products']&quot; and @t-as='line']/td[@class='text-end'][2]" position="after">-->
-<!--                <td class="text-end">-->
-<!--                    <t t-if="currency['position']">-->
-<!--&lt;!&ndash;                        <span t-esc="line"/>&ndash;&gt;-->
-<!--                        <span t-out='line["total_cost"] * line["quantity"]' t-options="{'widget': 'float', 'precision': currency['precision']}">1.00</span>-->
-<!--                        <span t-out='currency["symbol"]'>$</span>-->
-<!--                        <span t-out='line["margin"] * line["quantity"]' t-options="{'widget': 'float', 'precision': currency['precision']}">1.00</span>-->
-<!--&lt;!&ndash;                        <span t-out='currency["symbol"]'>$</span>&ndash;&gt;-->
-<!--                    </t>-->
-<!--                    <t t-else="">-->
-<!--                        <span t-out='currency["symbol"]'>$</span>-->
-<!--                        <span t-out='line["total_cost"]' t-options="{'widget': 'float', 'precision': currency['precision']}">1.00</span>-->
-<!--&lt;!&ndash;                        <span t-out='currency["symbol"]'>$</span>&ndash;&gt;-->
-<!--                        <span t-out='line["margin"] * line["quantity"]' t-options="{'widget': 'float', 'precision': currency['precision']}">1.00</span>-->
-<!--                    </t>-->
-<!--                </td>-->
-<!--            </xpath>-->
              <xpath expr="//tr[td/strong/span[@t-out=&quot;products_info['qty']&quot;]]" position="after">
                  <tr>
                     <td>
