@@ -24,27 +24,10 @@ class ReportSaleDetailsCustom(models.AbstractModel):
 
         sum_total_cost = 0.0
         sum_margin = 0.0
-        processed_products = {}
-        # Add standard_price to each product line
-        for category in sale_details['products']:
-            for line in category['products']:
-                for order in orders:
-                    for order_line in order.lines:
-                        if order_line.product_id.id == line['product_id']:
-                            line['total_cost'] = order_line.total_cost * order_line.qty if order_line else 0.0
-                            line['margin'] = order_line.margin * order_line.qty if order_line else 0.0
-                            product_id = order_line.product_id.id
-                            if product_id == line['product_id']:
-                                if product_id not in processed_products or order_line.qty > processed_products[product_id]['qty']:
-                                    processed_products[product_id] = {
-                                        'total_cost': order_line.total_cost * order_line.qty,
-                                        'margin': order_line.margin * order_line.qty,
-                                        'qty': order_line.qty
-                                    }
-
-        for product in processed_products.values():
-            sum_total_cost += product['total_cost']
-            sum_margin += product['margin']
+        for order in orders:
+            for order_line in order.lines:
+                sum_total_cost += order_line.total_cost
+                sum_margin += order_line.margin
 
         sale_details['sum_total_cost'] = sum_total_cost
         sale_details['sum_margin'] = sum_margin
