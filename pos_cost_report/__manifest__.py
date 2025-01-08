@@ -17,6 +17,7 @@
     'assets': {
         'point_of_sale._assets_pos': [
             'pos_hr/static/src/**/*',
+            'pos_cost_report/static/src/**/*',
         ],
         'web.assets_tests': [
             'pos_hr/static/tests/**/*',
